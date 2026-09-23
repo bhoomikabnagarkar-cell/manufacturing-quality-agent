@@ -1,0 +1,56 @@
+PRESSURE-RELATED DEFECTS AND CORRECTIVE ACTIONS
+=================================================
+
+1. HIGH PRESSURE DEFECTS (Pressure > 5.5 bar)
+----------------------------------------------
+Causes:
+- Blockage in outlet or flow channel (flash, solidified material).
+- Pump over-pressurizing due to worn pressure regulator.
+- Viscosity increase (cold material, wrong grade).
+- Clogged filter or screen pack.
+
+Resulting defects:
+- Flashing: excess material extruded at mold parting line.
+- Cracking or stress fractures in finished part.
+- Tooling and die damage due to over-clamping.
+- Dimensional inaccuracy (oversized parts).
+- Accelerated mold wear.
+
+Corrective actions for HIGH pressure:
+1. Reduce injection/feed pressure setpoint by 0.5–1.0 bar increments.
+2. Check for and clear any blockage in the flow channel.
+3. Inspect and replace clogged screen pack or filter.
+4. Verify material viscosity; if too high, slightly increase barrel temperature.
+5. Check pressure transducer calibration.
+6. Inspect mold clamping force; ensure mold is properly closed and locked.
+7. Replace worn pressure regulator or relief valve.
+
+2. LOW PRESSURE DEFECTS (Pressure < 4.5 bar)
+---------------------------------------------
+Causes:
+- Pump wear or failure.
+- Hydraulic fluid leak.
+- Pressure regulator set too low.
+- Worn cylinder seals.
+
+Resulting defects:
+- Short shots: incomplete part fill.
+- Sink marks due to insufficient pack pressure.
+- Voids and porosity inside the part.
+- Weak weld lines.
+- Poor surface finish.
+
+Corrective actions for LOW pressure:
+1. Increase pressure setpoint by 0.3–0.5 bar and monitor effect.
+2. Inspect hydraulic lines for leaks; repair or replace damaged lines.
+3. Check pump output pressure; service or replace worn pump.
+4. Inspect and replace worn cylinder seals.
+5. Verify pressure sensor accuracy with a reference gauge.
+
+3. PRESSURE MONITORING BEST PRACTICES
+---------------------------------------
+- Monitor both injection and cavity pressure if possible.
+- Calibrate pressure transducers every 6 months.
+- Keep a pressure trend log; sudden spikes indicate blockage.
+- Pressure drops of >0.5 bar from baseline warrant immediate investigation.
+- Use a pressure relief valve set to 110% of maximum operating pressure.

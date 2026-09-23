@@ -1,0 +1,78 @@
+MANUFACTURING QUALITY CONTROL - KNOWLEDGE BASE
+================================================
+
+1. OVERVIEW OF MANUFACTURING QUALITY CONTROL
+---------------------------------------------
+Manufacturing quality control (QC) is the process of ensuring that products are
+manufactured within defined tolerances and meet customer specifications. QC in
+manufacturing involves monitoring process parameters continuously to detect
+deviations before defects occur.
+
+Key principles:
+- Prevention is better than correction: detect problems early using sensors.
+- Statistical Process Control (SPC): use data to distinguish normal variation
+  from abnormal variation.
+- Root cause analysis: identify WHY a parameter is out of range, not just THAT
+  it is out of range.
+- Corrective and preventive actions (CAPA): document, fix, and prevent recurrence.
+
+2. CRITICAL PROCESS PARAMETERS
+--------------------------------
+In most manufacturing processes, the following parameters are monitored:
+
+a) Temperature
+   - Affects material properties (hardness, viscosity, tensile strength).
+   - Normal range depends on material and process (e.g., 75–95 °C for plastics).
+   - High temperature can cause thermal degradation, warping, or burn marks.
+   - Low temperature can cause poor bonding, brittleness, or incomplete curing.
+
+b) Pressure
+   - Drives material flow in injection molding, stamping, and extrusion.
+   - Normal range: 4.5–5.5 bar for most light manufacturing processes.
+   - High pressure causes flashing, cracking, or tooling wear.
+   - Low pressure results in incomplete fill, voids, or weak parts.
+
+c) Vibration
+   - Caused by rotating parts, bearings, gears, or unbalanced loads.
+   - Normal vibration: 0.5–1.5 mm/s RMS.
+   - Elevated vibration (>2.0 mm/s) indicates bearing wear, misalignment,
+     or imbalance, which degrades surface finish and dimensional accuracy.
+   - Critical vibration (>3.5 mm/s) can cause tool breakage or machine damage.
+
+d) Machine Speed (RPM)
+   - Affects material processing rate, heat generation, and surface finish.
+   - Normal operating range: 950–1050 RPM.
+   - Over-speed causes excessive heat, vibration, and tool wear.
+   - Under-speed reduces productivity and may cause material solidification.
+
+e) Production Rate
+   - Units produced per minute; derived from machine speed and process efficiency.
+   - Normal rate: 45–55 units/min.
+   - Drop in production rate below 40 units/min signals a problem.
+   - Excessive rate above 60 units/min usually indicates skipped quality checks.
+
+3. QUALITY STATUS DEFINITIONS
+-------------------------------
+- Normal:   All parameters within acceptable range. Process stable.
+- Warning:  One or more parameters slightly outside range. Monitor closely.
+             Intervention may be needed within 30 minutes.
+- Critical: One or more parameters significantly outside range. Immediate
+             intervention required to prevent defective production or machine damage.
+
+4. DEFECT TYPES LINKED TO PROCESS PARAMETERS
+---------------------------------------------
+- Dimensional defects: caused by temperature fluctuation, worn tooling,
+  machine speed variation.
+- Surface finish defects: caused by vibration, contamination, speed instability.
+- Structural defects (voids, cracks): caused by pressure anomalies.
+- Burn marks: caused by high temperature or high speed generating heat.
+- Incomplete fill / short shots: caused by low pressure or low temperature.
+
+5. GENERAL CORRECTIVE ACTIONS
+-------------------------------
+Step 1: Stop or slow the machine if Critical status is detected.
+Step 2: Identify which parameter is out of range (temperature, pressure, vibration).
+Step 3: Apply the parameter-specific corrective action (see other documents).
+Step 4: Run a small test batch and inspect parts before resuming full production.
+Step 5: Log the event in the maintenance record.
+Step 6: Update preventive maintenance schedule if wear is detected.

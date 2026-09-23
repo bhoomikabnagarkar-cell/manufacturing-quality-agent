@@ -1,0 +1,75 @@
+PREVENTIVE MAINTENANCE FOR MANUFACTURING QUALITY
+=================================================
+
+1. OVERVIEW
+------------
+Preventive Maintenance (PM) is scheduled maintenance performed to prevent
+equipment failure before it occurs. PM is a cornerstone of quality manufacturing
+because machine degradation directly causes product defects.
+
+PM differs from reactive maintenance (fixing after breakdown) in that:
+- PM reduces unplanned downtime by 30–50%.
+- PM reduces defect rates by catching wear before it causes quality issues.
+- PM is less expensive than emergency repairs.
+
+2. KEY PM ACTIVITIES RELEVANT TO PROCESS QUALITY
+--------------------------------------------------
+a) Lubrication Management
+   - Use the correct lubricant grade specified by the machine manufacturer.
+   - Over-lubrication can attract contaminants; under-lubrication causes wear.
+   - Check oil level daily; change oil on schedule (typically every 500–1000 hr).
+   - Grease bearings per schedule; use a grease gun, do not over-pack.
+
+b) Cooling System Maintenance
+   - Flush and replace coolant every 6 months or per manufacturer schedule.
+   - Inspect coolant hoses for cracking, swelling, or leaks monthly.
+   - Clean heat exchangers and radiators quarterly.
+   - Maintain coolant concentration for corrosion protection.
+
+c) Drive System Maintenance
+   - Inspect drive belts for cracking, fraying, or glazing monthly.
+   - Check belt tension with a belt tension gauge; adjust if slack or over-tight.
+   - Inspect chain drives for wear and lubrication.
+   - Inspect and align couplings after any motor or gearbox service.
+
+d) Tooling Management
+   - Track tool life in hours and replace proactively at end of life.
+   - Inspect cutting tools for chipping under magnification.
+   - Re-grind or replace tools that show wear beyond defined limits.
+   - Use correct cutting parameters (speed, feed, depth) to maximize tool life.
+
+e) Seals and Gaskets
+   - Inspect hydraulic and pneumatic seals for leakage monthly.
+   - Replace seals at first sign of weeping or leakage.
+   - Use manufacturer-specified seal material for compatibility with fluids.
+
+3. PM SCHEDULING BEST PRACTICES
+---------------------------------
+- Use a Computerized Maintenance Management System (CMMS) or simple spreadsheet.
+- Assign PM tasks to specific technicians with deadlines.
+- Never skip PM tasks due to production pressure — this creates larger problems.
+- Perform PM during planned downtime (nights, weekends) to minimize disruption.
+- After PM, always verify machine performance with a test run before production.
+
+4. RELATIONSHIP BETWEEN PM AND PROCESS PARAMETERS
+---------------------------------------------------
+Well-maintained machine:
+  Temperature stable within ±2 °C of setpoint.
+  Pressure stable within ±0.2 bar of setpoint.
+  Vibration below 1.5 mm/s.
+  Machine speed stable within ±20 RPM.
+
+Under-maintained machine:
+  Temperature fluctuates due to worn heater elements or blocked coolant.
+  Pressure drops due to leaking seals or worn pump.
+  Vibration increases due to bearing wear.
+  Speed varies due to worn belts or encoder issues.
+
+5. SIGNS THAT PM IS OVERDUE
+-----------------------------
+- Process parameters drifting gradually over days or weeks.
+- Increasing defect rate without apparent cause.
+- Unusual noise from machine (knocking, squealing, grinding).
+- Increased energy consumption.
+- Coolant leaks or oil stains under machine.
+- Vibration trend increasing week over week.

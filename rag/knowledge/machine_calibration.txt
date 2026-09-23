@@ -1,0 +1,82 @@
+MACHINE CALIBRATION AND PREVENTIVE MAINTENANCE
+================================================
+
+1. WHY CALIBRATION MATTERS
+----------------------------
+Calibration ensures that machine sensors, controllers, and actuators produce
+accurate and repeatable results. Uncalibrated machines produce parts that drift
+out of specification even when process parameters appear to be within range.
+
+Calibration must be performed:
+- On a scheduled basis (see intervals below).
+- After any repair, component replacement, or major maintenance.
+- When process quality unexpectedly deteriorates.
+- After any machine relocation.
+
+2. CALIBRATION INTERVALS (GENERAL GUIDELINES)
+-----------------------------------------------
+Component                    Calibration Interval
+---------------------------  --------------------
+Temperature sensors          Every 3 months
+Pressure transducers         Every 6 months
+Vibration sensors            Every 6 months
+Speed / tachometer           Every 6 months
+Load cells / force gauges    Every 3 months
+Position / dimensional gauges  Every month
+Overall machine accuracy     Every 12 months (or after major overhaul)
+
+3. CALIBRATION PROCEDURE (TEMPERATURE EXAMPLE)
+------------------------------------------------
+1. Allow machine to reach thermal equilibrium (30 min warm-up).
+2. Place a calibrated reference thermometer at the same location as the sensor.
+3. Record sensor reading and reference reading at three temperatures:
+   - Lower operating limit (e.g., 75 °C)
+   - Mid-range (e.g., 85 °C)
+   - Upper operating limit (e.g., 95 °C)
+4. If deviation > ±2 °C, adjust the sensor offset in the controller.
+5. Re-test and document the calibration result.
+6. Attach calibration label with date and next due date.
+
+4. PREVENTIVE MAINTENANCE SCHEDULE
+------------------------------------
+Daily:
+- Visual inspection of machine for leaks, damage, or unusual noise.
+- Check lubrication levels (oil, grease).
+- Clean machine surfaces and remove debris.
+- Verify all safety guards are in place.
+
+Weekly:
+- Check belt tension and condition.
+- Inspect hoses and fittings for wear.
+- Verify sensor readings match expected values.
+- Check and tighten any loose fasteners.
+
+Monthly:
+- Lubricate all bearing points.
+- Check alignment of drive components.
+- Clean coolant system and check coolant concentration.
+- Inspect tooling wear and replace if worn beyond limit.
+- Test emergency stop and safety circuits.
+
+Quarterly:
+- Calibrate temperature sensors.
+- Perform full vibration analysis.
+- Inspect and clean heat exchangers.
+- Review production quality data trends.
+
+Annually:
+- Full machine overhaul and accuracy check.
+- Replace all wear parts (belts, seals, filters) proactively.
+- Verify all safety systems and interlock functions.
+
+5. CALIBRATION RECORDS
+------------------------
+Always maintain a written calibration record including:
+- Machine ID and location.
+- Date of calibration.
+- Parameter calibrated.
+- Before and after readings.
+- Technician name and signature.
+- Next calibration due date.
+
+Poor calibration records are a common finding in quality audits (ISO 9001, IATF 16949).

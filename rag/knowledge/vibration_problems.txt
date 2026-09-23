@@ -1,0 +1,63 @@
+VIBRATION PROBLEMS AND CORRECTIVE ACTIONS
+==========================================
+
+1. CAUSES OF ELEVATED VIBRATION
+---------------------------------
+Vibration in manufacturing machines is primarily caused by:
+- Bearing wear or damage (most common cause, >40% of cases).
+- Rotor or spindle imbalance.
+- Misalignment between motor shaft and driven shaft.
+- Loosened fasteners or mounting bolts.
+- Gear tooth wear or damage.
+- Resonance at specific operating speeds.
+- Foundation issues (uneven floor, loose anchor bolts).
+
+2. VIBRATION SEVERITY LEVELS
+------------------------------
+Based on ISO 10816 and common industry practice:
+
+Level            Vibration (mm/s RMS)   Action Required
+---------        --------------------   ---------------
+Normal           0.5 – 1.5              None
+Warning          1.6 – 3.4              Schedule maintenance within 1 week
+Critical         3.5 – 5.5              Stop machine; immediate inspection
+Danger           > 5.5                  Emergency shutdown; risk of machine damage
+
+3. DEFECTS CAUSED BY EXCESSIVE VIBRATION
+------------------------------------------
+- Poor surface finish on machined or formed parts.
+- Dimensional variation (chatter marks, out-of-round features).
+- Tool chipping or breakage during machining.
+- Fatigue cracks in structural components over time.
+- Loose fasteners in assembled products.
+- Inconsistent weld bead geometry in welding operations.
+
+4. CORRECTIVE ACTIONS FOR HIGH VIBRATION
+-----------------------------------------
+Step 1 – Immediate actions:
+  1. Reduce machine speed by 10–20% to check if vibration decreases.
+  2. If vibration is Critical, stop the machine immediately.
+
+Step 2 – Diagnosis:
+  3. Use a vibration analyzer or simple accelerometer to locate the source.
+  4. Check all bearing temperatures by touch or infrared thermometer.
+  5. Inspect motor and shaft coupling alignment with a dial indicator.
+  6. Check and tighten all mounting bolts (torque to specification).
+
+Step 3 – Repair:
+  7. Replace worn or damaged bearings.
+  8. Perform dynamic balancing on the rotor/spindle.
+  9. Realign motor-to-gearbox or gearbox-to-machine coupling.
+  10. Replace worn gears or apply gear lubrication.
+
+Step 4 – Verification:
+  11. Restart machine and measure vibration again.
+  12. Run at normal speed for 10 minutes; confirm vibration is within normal range.
+
+5. PREVENTIVE MAINTENANCE FOR VIBRATION
+-----------------------------------------
+- Lubricate bearings every 500 operating hours (or per manufacturer schedule).
+- Check alignment after any motor or gearbox replacement.
+- Torque-check all foundation bolts monthly.
+- Trend vibration levels; a gradual increase indicates developing wear.
+- Replace bearings proactively at 80% of rated service life.

@@ -1,0 +1,53 @@
+TEMPERATURE-RELATED DEFECTS AND CORRECTIVE ACTIONS
+====================================================
+
+1. HIGH TEMPERATURE DEFECTS (Temperature > 95 °C)
+--------------------------------------------------
+Causes:
+- Cooling system failure or blocked coolant channel.
+- Heater controller malfunction (stuck ON).
+- Excessive friction due to worn bearings or lubrication failure.
+- High ambient temperature combined with inadequate cooling.
+
+Resulting defects:
+- Thermal degradation: material discoloration, brittleness, reduced tensile strength.
+- Warping or dimensional distortion due to thermal expansion.
+- Burn marks on product surface.
+- Adhesion failure in bonded assemblies.
+- Reduced tool life due to thermal fatigue.
+
+Corrective actions for HIGH temperature:
+1. Immediately reduce heater setpoint by 5–10 °C.
+2. Check coolant flow rate and temperature; clean blocked coolant channels.
+3. Inspect and lubricate bearings; replace if worn.
+4. Verify temperature sensor calibration (may be reading incorrectly).
+5. Increase cooling dwell time by 10–15%.
+6. Reduce machine speed by 5–10% to reduce frictional heat.
+7. Inspect material: high-moisture raw material increases processing heat.
+
+2. LOW TEMPERATURE DEFECTS (Temperature < 75 °C)
+-------------------------------------------------
+Causes:
+- Heater failure or controller set too low.
+- Cold startup without adequate warm-up time.
+- Coolant over-circulation.
+
+Resulting defects:
+- Incomplete fill (short shots) in molded parts.
+- Poor bonding or weld strength.
+- Brittleness and cracking in finished product.
+- Increased cycle time as material flows slowly.
+
+Corrective actions for LOW temperature:
+1. Increase heater setpoint by 5–10 °C.
+2. Allow machine to warm up fully (minimum 15 minutes) before production.
+3. Reduce coolant flow slightly.
+4. Check heater element continuity; replace faulty heaters.
+
+3. TEMPERATURE MONITORING BEST PRACTICES
+------------------------------------------
+- Calibrate temperature sensors every 3 months.
+- Use redundant sensors at critical points.
+- Set alarms at 90% of the upper limit (e.g., alarm at 90 °C if limit is 95 °C).
+- Log temperature trend; gradual upward drift may indicate coolant degradation.
+- Perform thermal imaging quarterly to detect hot spots in equipment.

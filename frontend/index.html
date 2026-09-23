@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manufacturing Quality Control Agent</title>
+  <link rel="stylesheet" href="/static/css/dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════ SIDEBAR ══════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <span class="logo-icon">⚙</span>
+    <span class="logo-text">MQC Agent</span>
+  </div>
+  <nav class="sidebar-nav">
+    <button class="nav-item active" data-page="overview"  onclick="navigateTo('overview')">
+      <span class="nav-icon">🏠</span><span class="nav-label">Overview</span>
+    </button>
+    <button class="nav-item" data-page="analysis" onclick="navigateTo('analysis')">
+      <span class="nav-icon">🔍</span><span class="nav-label">Live Analysis</span>
+    </button>
+    <button class="nav-item" data-page="analytics" onclick="navigateTo('analytics')">
+      <span class="nav-icon">📊</span><span class="nav-label">Analytics</span>
+    </button>
+    <button class="nav-item" data-page="data"     onclick="navigateTo('data')">
+      <span class="nav-icon">📁</span><span class="nav-label">Data &amp; Models</span>
+    </button>
+  </nav>
+  <div class="sidebar-footer">v1.0 · Gemini + RAG</div>
+</aside>
+
+<!-- ══════════════════════ MAIN SHELL ════════════════════════════════════════ -->
+<div class="shell">
+
+  <!-- ── Top Header ─────────────────────────────────────────────────────────── -->
+  <header class="topbar">
+    <button class="hamburger" onclick="toggleSidebar()" title="Toggle sidebar">☰</button>
+    <div class="topbar-brand">
+      <span class="topbar-title">Manufacturing Quality Control Agent</span>
+      <span class="topbar-sub">AI-Powered Process Monitoring · Multi-Agent System · Gemini + RAG</span>
+    </div>
+    <div id="systemStatus" class="hdr-badge badge-neutral">● SYSTEM READY</div>
+  </header>
+
+  <!-- ── Page content ───────────────────────────────────────────────────────── -->
+  <main class="content">
+
+    <!-- ════════════════════════════════════════════════ PAGE: OVERVIEW ═══ -->
+    <section id="page-overview" class="page active">
+
+      <!-- Alert banner — hidden until analysis runs -->
+      <div id="statusBanner" class="alert-banner alert-neutral hidden">
+        <span id="bannerIcon" class="alert-icon">●</span>
+        <div class="alert-body">
+          <div id="bannerTitle" class="alert-title">—</div>
+          <div id="bannerSub"   class="alert-sub">Run an analysis to see results.</div>
+        </div>
+        <button class="btn btn-sm btn-primary" onclick="navigateTo('analysis')">View Details →</button>
+      </div>
+
+      <!-- KPI row -->
+      <div class="kpi-row">
+        <div class="kpi-card" id="kpi_status">
+          <div class="kpi-label">Process Status</div>
+          <div class="kpi-value kpi-neutral" id="kpi_status_val">—</div>
+          <div class="kpi-hint">Overall condition</div>
+        </div>
+        <div class="kpi-card" id="kpi_risk">
+          <div class="kpi-label">Quality Risk</div>
+          <div class="kpi-value kpi-neutral" id="kpi_risk_val">—</div>
+          <div class="kpi-hint">Current risk level</div>
+        </div>
+        <div class="kpi-card" id="kpi_defect">
+          <div class="kpi-label">Defect Probability</div>
+          <div class="kpi-value kpi-neutral" id="kpi_defect_val">—</div>
+          <div class="kpi-hint">ML prediction</div>
+        </div>
+        <div class="kpi-card" id="kpi_alerts">
+          <div class="kpi-label">Active Alerts</div>
+          <div class="kpi-value kpi-neutral" id="kpi_alerts_val">—</div>
+          <div class="kpi-hint">Abnormal parameters</div>
+        </div>
+        <div class="kpi-card" id="kpi_recs">
+          <div class="kpi-label">Recommendations</div>
+          <div class="kpi-value kpi-neutral" id="kpi_recs_val">—</div>
+          <div class="kpi-hint">Pending actions</div>
+        </div>
+      </div>
+
+      <!-- Overview body: trend chart + recent alerts -->
+      <div class="two-col">
+        <div class="card span2">
+          <div class="card-hdr">
+            <span>Process Trend (Last 40 Readings)</span>
+            <button class="btn btn-sm btn-primary" onclick="analyzeLatest()">▶ Analyze Latest</button>
+          </div>
+          <div class="card-body">
+            <canvas id="trendChart" height="210"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-hdr">Recent Alerts</div>
+          <div class="card-body">
+            <div id="ov_alerts" class="alert-list">
+              <p class="muted-text">No alerts yet. Run an analysis first.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hdr">Quality Status Distribution</div>
+          <div class="card-body chart-center">
+            <canvas id="statusChart" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════ PAGE: LIVE ANALYSIS ═══ -->
+    <section id="page-analysis" class="page">
+
+      <div class="page-title">Live Analysis</div>
+
+      <div class="analysis-grid">
+
+        <!-- Left: inputs -->
+        <div class="analysis-inputs">
+
+          <div class="card">
+            <div class="card-hdr">Sensor Input</div>
+            <div class="card-body">
+              <div class="input-group-stack">
+                <label class="input-lbl">Temperature (°C)
+                  <input type="number" id="p_temp" step="0.1" value="85.0" class="field" />
+                </label>
+                <label class="input-lbl">Pressure (bar)
+                  <input type="number" id="p_pres" step="0.1" value="5.0" class="field" />
+                </label>
+                <label class="input-lbl">Vibration (mm/s)
+                  <input type="number" id="p_vib" step="0.01" value="1.0" class="field" />
+                </label>
+                <label class="input-lbl">Machine Speed (RPM)
+                  <input type="number" id="p_speed" step="1" value="1000" class="field" />
+                </label>
+                <label class="input-lbl">Production Rate (u/min)
+                  <input type="number" id="p_rate" step="0.1" value="50.0" class="field" />
+                </label>
+              </div>
+              <div class="btn-stack mt12">
+                <button class="btn btn-primary full-w" onclick="analyzeManual()">▶ Analyze Manual Input</button>
+                <button class="btn btn-secondary full-w" onclick="analyzeLatest()">▶ Analyze Latest Reading</button>
+                <div class="row-inline">
+                  <input type="number" id="rowIndex" class="field" placeholder="Row #" min="0" value="0" style="flex:1" />
+                  <button class="btn btn-secondary" onclick="analyzeRow()">Analyze Row</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sensor status gauges -->
+          <div class="card">
+            <div class="card-hdr">Sensor Status</div>
+            <div class="card-body">
+              <div class="gauge-col">
+                <div class="gauge-row" id="g_temperature">
+                  <div class="gauge-name">Temperature</div>
+                  <div class="gauge-bar-wrap"><div class="gauge-bar"></div></div>
+                  <div class="gauge-reading"><span class="gauge-value">—</span> <span class="gauge-unit">°C</span></div>
+                </div>
+                <div class="gauge-row" id="g_pressure">
+                  <div class="gauge-name">Pressure</div>
+                  <div class="gauge-bar-wrap"><div class="gauge-bar"></div></div>
+                  <div class="gauge-reading"><span class="gauge-value">—</span> <span class="gauge-unit">bar</span></div>
+                </div>
+                <div class="gauge-row" id="g_vibration">
+                  <div class="gauge-name">Vibration</div>
+                  <div class="gauge-bar-wrap"><div class="gauge-bar"></div></div>
+                  <div class="gauge-reading"><span class="gauge-value">—</span> <span class="gauge-unit">mm/s</span></div>
+                </div>
+                <div class="gauge-row" id="g_machine_speed">
+                  <div class="gauge-name">Machine Speed</div>
+                  <div class="gauge-bar-wrap"><div class="gauge-bar"></div></div>
+                  <div class="gauge-reading"><span class="gauge-value">—</span> <span class="gauge-unit">RPM</span></div>
+                </div>
+                <div class="gauge-row" id="g_production_rate">
+                  <div class="gauge-name">Prod. Rate</div>
+                  <div class="gauge-bar-wrap"><div class="gauge-bar"></div></div>
+                  <div class="gauge-reading"><span class="gauge-value">—</span> <span class="gauge-unit">u/min</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: results -->
+        <div class="analysis-results">
+
+          <!-- Agent pipeline cards -->
+          <div class="agent-pipeline">
+            <div class="agent-step" id="agent_monitoring">
+              <div class="agent-num">①</div>
+              <div class="agent-info">
+                <div class="agent-name">Process Monitoring</div>
+                <div class="agent-status-txt" id="a_monitor_status">—</div>
+                <div class="agent-detail" id="a_monitor_detail">Awaiting analysis.</div>
+              </div>
+            </div>
+            <div class="pipeline-arrow">↓</div>
+            <div class="agent-step" id="agent_quality">
+              <div class="agent-num">②</div>
+              <div class="agent-info">
+                <div class="agent-name">Quality Analysis</div>
+                <div class="agent-status-txt" id="a_quality_status">—</div>
+                <div class="agent-detail" id="a_quality_detail">Awaiting analysis.</div>
+              </div>
+            </div>
+            <div class="pipeline-arrow">↓</div>
+            <div class="agent-step" id="agent_defect">
+              <div class="agent-num">③</div>
+              <div class="agent-info">
+                <div class="agent-name">Defect Prediction</div>
+                <div class="agent-status-txt" id="a_defect_status">—</div>
+                <div class="agent-detail" id="a_defect_detail">Awaiting analysis.</div>
+              </div>
+            </div>
+            <div class="pipeline-arrow">↓</div>
+            <div class="agent-step" id="agent_optim">
+              <div class="agent-num">④</div>
+              <div class="agent-info">
+                <div class="agent-name">Process Optimization</div>
+                <div class="agent-status-txt" id="a_optim_status">—</div>
+                <div class="agent-detail" id="a_optim_detail">Awaiting analysis.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Explanation -->
+          <div class="card mt12">
+            <div class="card-hdr">🤖 AI Explanation — Gemini + RAG</div>
+            <div class="card-body">
+              <div id="aiExplanation" class="ai-box">Run an analysis to generate an AI explanation.</div>
+            </div>
+          </div>
+
+          <!-- Feature contribution chart -->
+          <div class="card mt12">
+            <div class="card-hdr">Feature Contributions</div>
+            <div class="card-body">
+              <canvas id="featureChart" height="160"></canvas>
+            </div>
+          </div>
+
+          <!-- Recommendations -->
+          <div class="card mt12">
+            <div class="card-hdr">Corrective Action Recommendations</div>
+            <div class="card-body">
+              <div id="recommendations" class="rec-list">
+                <p class="muted-text">No recommendations yet.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════ PAGE: ANALYTICS ══════ -->
+    <section id="page-analytics" class="page">
+
+      <div class="page-title">Analytics</div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-hdr">Temperature Trend</div>
+          <div class="card-body"><canvas id="chartTemp" height="180"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-hdr">Pressure Trend</div>
+          <div class="card-body"><canvas id="chartPres" height="180"></canvas></div>
+        </div>
+      </div>
+
+      <div class="two-col mt16">
+        <div class="card">
+          <div class="card-hdr">Vibration Trend</div>
+          <div class="card-body"><canvas id="chartVib" height="180"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-hdr">Machine Speed Trend</div>
+          <div class="card-body"><canvas id="chartSpeed" height="180"></canvas></div>
+        </div>
+      </div>
+
+      <div class="two-col mt16">
+        <div class="card">
+          <div class="card-hdr">Production Rate Trend</div>
+          <div class="card-body"><canvas id="chartRate" height="180"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-hdr">Defect &amp; Anomaly Statistics</div>
+          <div class="card-body">
+            <div id="defectStats" class="stat-grid">
+              <p class="muted-text">Loading…</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════ PAGE: DATA & MODELS ════════ -->
+    <section id="page-data" class="page">
+
+      <div class="page-title">Data &amp; Models</div>
+
+      <div class="two-col">
+
+        <!-- Upload & Train -->
+        <div class="card">
+          <div class="card-hdr">Upload CSV &amp; Analyze</div>
+          <div class="card-body">
+            <p class="hint-text">Upload a manufacturing process CSV. The last row will be analyzed.</p>
+            <div class="upload-zone" id="uploadZone">
+              <span class="upload-icon">📂</span>
+              <span>Drag &amp; drop or click to browse</span>
+              <input type="file" id="csvFile" accept=".csv" class="upload-input" onchange="handleFileSelect()" />
+            </div>
+            <div id="selectedFileName" class="file-name-hint"></div>
+            <button class="btn btn-primary full-w mt12" onclick="uploadCSV()">Upload &amp; Analyze</button>
+          </div>
+        </div>
+
+        <!-- Train models -->
+        <div class="card">
+          <div class="card-hdr">ML Model Training</div>
+          <div class="card-body">
+            <p class="hint-text">Train or retrain the Isolation Forest (anomaly) and Random Forest (defect) models on the manufacturing dataset.</p>
+            <div class="model-info-grid">
+              <div class="model-chip">
+                <div class="model-chip-name">Isolation Forest</div>
+                <div class="model-chip-desc">Anomaly Detection</div>
+              </div>
+              <div class="model-chip">
+                <div class="model-chip-name">Random Forest</div>
+                <div class="model-chip-desc">Defect Prediction</div>
+              </div>
+            </div>
+            <button class="btn btn-warning full-w mt12" onclick="trainModels()">⚡ Train / Retrain ML Models</button>
+            <div id="trainStatus" class="train-status-box mt8"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dataset summary -->
+      <div class="card mt16">
+        <div class="card-hdr">Dataset Summary</div>
+        <div class="card-body">
+          <div id="datasetSummary" class="summary-wrap">
+            <p class="muted-text">Loading…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dataset preview (last 10 rows) -->
+      <div class="card mt16">
+        <div class="card-hdr">Dataset Preview <span class="badge-info" id="totalRecords"></span></div>
+        <div class="card-body table-wrap">
+          <div id="datasetPreview"><p class="muted-text">Loading…</p></div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<!-- Loading overlay -->
+<div id="loadingOverlay" class="loading-overlay hidden">
+  <div class="spinner"></div>
+  <div class="loading-text">Running Agent Pipeline…</div>
+</div>
+
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>
